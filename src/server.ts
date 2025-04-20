@@ -7,9 +7,9 @@ const getServer = () => {
         port: 3000,
     })
 
-    defineRoutes(server)
+    server.route(defineRoutes);
 
-    return server
+    return server;
 }
 
 export const initializeServer = async () => {
