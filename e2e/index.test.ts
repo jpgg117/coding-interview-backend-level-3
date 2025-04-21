@@ -1,5 +1,6 @@
 import { initializeServer } from '../src/server'
 import { Server } from '@hapi/hapi'
+import {prisma} from "../src/prisma";
 
 describe('E2E Tests', () => {
     let server: Server
@@ -11,6 +12,7 @@ describe('E2E Tests', () => {
 
     beforeEach(async () => {
         server = await initializeServer()
+        await prisma.item.deleteMany()
     })
 
     it('should get a response with status code 200', async () => {
